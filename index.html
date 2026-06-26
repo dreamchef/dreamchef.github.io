@@ -1,43 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>whatimdo.ing</title>
-  <style>
-    body { font-family: system-ui, sans-serif; margin: 50px; line-height: 1.4; }
-    ul { list-style: none; padding-left: 1em; }
-    li::before { content: "• "; color: #888; }
-    details { cursor: pointer; }
-    summary { outline: none; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daniel Lisle</title>
+<meta name="description" content="Daniel Lisle. Research engineer at Anduril, working on autonomy, agents, and simulated worlds.">
+<link rel="icon" href="data:,">
+<style>
+  :root {
+    --bg: #fbfbf9;
+    --fg: #1c1c1a;
+    --muted: #6c6c66;
+    --rule: #e4e3dc;
+    --link: #3a5a8c;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161613;
+      --fg: #e7e5de;
+      --muted: #9b9991;
+      --rule: #33322d;
+      --link: #93b2e2;
+    }
+  }
+
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Charter", "Bitstream Charter", "Sitka Text", Cambria, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    font-size: 1.13rem;
+    line-height: 1.62;
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 4.5rem 1.4rem 6rem;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1 {
+    font-size: 1.65rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0 0 0.25rem;
+  }
+  .role {
+    color: var(--muted);
+    margin: 0 0 2.2rem;
+  }
+  h2 {
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--muted);
+    margin: 2.9rem 0 0.7rem;
+  }
+
+  p { margin: 0 0 1.05rem; }
+
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  ul { list-style: none; margin: 0 0 1.05rem; padding: 0; }
+  li { margin: 0 0 0.55rem; }
+  .pname { font-weight: 600; }
+
+  .meta { color: var(--muted); }
+
+  figure { margin: 1.5rem 0; }
+  figure img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    display: block;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+  }
+  figcaption {
+    color: var(--muted);
+    font-size: 0.86rem;
+    font-style: italic;
+    margin-top: 0.45rem;
+    max-width: 400px;
+  }
+
+  .links a { margin-right: 0.2rem; }
+  .sep { color: var(--rule); margin: 0 0.45rem; }
+
+  footer {
+    margin-top: 3.5rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86rem;
+  }
+</style>
 </head>
 <body>
-  <h1>whatimdoing</h1>
-  <div id="content"></div>
 
-  <script>
-    fetch('content.json').then(r => r.json()).then(buildTree);
+<header>
+  <h1>Daniel Lisle</h1>
+  <p class="role">Research engineer at Anduril, autonomy and wargaming. Occasional token arsonist. Seattle.</p>
+</header>
 
-    function buildTree(data, parent = document.getElementById('content')) {
-      const ul = document.createElement('ul');
-      parent.appendChild(ul);
+<section>
+  <p>I build the tooling that lets language models author simulated worlds, and I get agents to make real decisions inside them. The thread running through most of my work is agent orchestration: many agents doing real work together, reliably, in environments that push back.</p>
 
-      data.forEach(item => {
-        const li = document.createElement('li');
-        ul.appendChild(li);
+  <p>I came to this through math. I studied applied math at CU Boulder, spent a few years modeling missions and autonomy in defense simulation, and kept circling the same two questions. How does behavior emerge from simple rules, and how do you build a model you can actually trust when the agents start changing themselves.</p>
 
-        if (item.children) {
-          const details = document.createElement('details');
-          const summary = document.createElement('summary');
-          summary.textContent = item.name;
-          details.appendChild(summary);
-          li.appendChild(details);
-          buildTree(item.children, details);
-        } else {
-          li.textContent = item.name;
-        }
-      });
-    }
-  </script>
+  <p>Outside work I build small things in the open, mostly around agents, dynamical systems, and markets. Some of them are below. Friends call me Dani.</p>
+</section>
+
+<section>
+  <h2>Now</h2>
+  <p>A running note on what has my attention.</p>
+  <ul>
+    <li>At Anduril: tooling for language-model authoring of scenarios and combined physics and autonomy models, natural language tasking for robots in simulation, and a library of behavior models I can point at specific problems.</li>
+    <li>On my own time: spawning agents into generated game worlds, then building up a library of scenarios and behaviors for them. It is the most fun I have with a computer.</li>
+    <li>Reading toward modern machine learning systems, and the economics underneath all of it.</li>
+  </ul>
+  <p class="meta">Updated June 2026.</p>
+</section>
+
+<section>
+  <h2>Work</h2>
+
+  <p>
+    <span class="pname">Anduril Industries</span><br>
+    Research Engineer, Autonomy and Wargaming. 2026 to present, Seattle.
+  </p>
+  <ul>
+    <li>Built and shipped tooling for language-model authoring of simulated scenarios and combined multiphysics and autonomy models, used across the organization.</li>
+    <li>Led a zero-to-one natural language tasking feature for robots in a simulated environment.</li>
+    <li>Built and maintained a library of high-fidelity robot behavior models, and used them to develop concepts of operations for specific customers.</li>
+  </ul>
+
+  <p>
+    <span class="pname">LinQuest</span><br>
+    Modeling and simulation engineering. 2024 to 2025, Washington DC.
+  </p>
+  <ul>
+    <li>Wrote a C++ plugin for the AFSIM engine that extended its finite-state-machine features and modularized complex behavior modeling.</li>
+    <li>Modeled missions and kill chains, including ISR, SEAD, and electronic attack, working with subject matter experts to capture concepts of operations.</li>
+    <li>Built Python tooling to batch-run large wargaming experiments and turn mission output into dashboards and visualizations.</li>
+    <li>Built a RAG-based, quantized LLM command-line tool for querying AFSIM documentation, and wrote a whitepaper on using language models for modeling-script generation.</li>
+  </ul>
+
+  <p>
+    <span class="pname">Earlier</span><br>
+    Research at the National Science Foundation (5G traffic anonymization, nonnegative matrix factorization for secure communications) and the Air Force Research Laboratory (reinforcement-learning agents in AFSIM, multi-asset control policies for multi-ship and multi-UAV scenarios).
+  </p>
+
+  <p class="meta">BS Applied Math, University of Colorado Boulder, 2024. Cleared US SECRET.</p>
+</section>
+
+<section>
+  <h2>Selected work</h2>
+  <p>Things I have built in the open. The full list lives on <a href="https://github.com/dreamchef">GitHub</a>.</p>
+
+  <p class="meta" style="margin-bottom:0.4rem;">Agents and worlds</p>
+  <ul>
+    <li><a class="pname" href="https://github.com/dreamchef/abm-dynamics-viz">abm-dynamics-viz</a>. Agent-based modeling with evolving, dynamical behavior. A multi-agent framework, plus a single-agent genetic algorithm that mutates the equations governing how an agent moves and changes.</li>
+    <li><a class="pname" href="https://github.com/dreamchef/genetic-equations-game-theory">genetic-equations-game-theory</a>. An interactive version of my paper, <em>Shadows of Future Minds: A Game Theoretic Approach to Novel Agent Emergence</em>, on anticipating agents that are structurally different from the ones in play today.</li>
+    <li><a class="pname" href="https://github.com/dreamchef/space-combat-game">space-combat-game</a>. A point, click, and drag browser game where you command a small fleet of ships on a 3D battlefield. Built with Babylon.js.</li>
+    <li><a class="pname" href="https://github.com/dreamchef/spatial-lighting-occlusion-model">spatial-lighting-occlusion-model</a>. Low-level 3D rendering written from scratch, including spatial occlusion and shadow casting, output to a bitmap.</li>
+  </ul>
+
+  <figure>
+    <img src="assets/bhv.gif" alt="Agent-based dynamics: agents moving under evolving rules">
+    <figcaption>From abm-dynamics-viz. Agent behavior emerging as the governing dynamics evolve.</figcaption>
+  </figure>
+
+  <p class="meta" style="margin-bottom:0.4rem;">Math and markets</p>
+  <ul>
+    <li><a class="pname" href="https://github.com/dreamchef/Black-Scholes-options-pricing">Black-Scholes-options-pricing</a>. Tests the Black-Scholes model on forecasting call prices for a real option chain, and digs into how volatility and time to expiration move the estimates.</li>
+    <li><a class="pname" href="https://github.com/dreamchef/chaotic-systems-analysis-tools">chaotic-systems-analysis-tools</a>. Tools for systems without closed-form solutions: Runge-Kutta integration, Lyapunov exponents, bifurcation plots, Poincare sections, and trajectory embeddings.</li>
+    <li><a class="pname" href="https://github.com/dreamchef/numerical-analysis-methods">numerical-analysis-methods</a>. Root finders, numerical integration, linear algebra, and visualization, written for a scientific-computing course.</li>
+    <li><a class="pname" href="https://github.com/dreamchef/complex-functions-visualization">complex-functions-visualization</a>. Plotting complex-valued functions of a complex variable a few different ways.</li>
+  </ul>
+
+  <figure>
+    <img src="assets/black-scholes-3.png" alt="Black-Scholes model output versus observed option prices">
+    <figcaption>From Black-Scholes-options-pricing. Model estimates against observed call prices.</figcaption>
+  </figure>
+
+  <p class="meta" style="margin-bottom:0.4rem;">Tools</p>
+  <ul>
+    <li><a class="pname" href="https://github.com/dreamchef/laser">laser</a>. Pour in a lot of data about a person, hand it an objective, and get an action plan back.</li>
+    <li><a class="pname" href="https://github.com/dreamchef/movBaker">movBaker</a>. Bulk-converts .mov files into editor-friendly m4v. A copy is in the 2020 GitHub Archive Program, so it should outlast me in a vault in the Arctic.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Elsewhere</h2>
+  <p class="links">
+    <a href="https://github.com/dreamchef">GitHub</a><span class="sep">·</span>
+    <a href="https://x.com/dani_lisle">X</a><span class="sep">·</span>
+    <a href="https://www.linkedin.com/in/danilisle">LinkedIn</a><span class="sep">·</span>
+    <a href="https://medium.com/@Dani_Lisle">Medium</a><span class="sep">·</span>
+    <a href="https://www.youtube.com/channel/UCltfb-Cik4sUWLJ8Mxedx_g">YouTube</a><span class="sep">·</span>
+    <a href="https://www.kaggle.com/danilisle">Kaggle</a>
+  </p>
+</section>
+
+<footer>
+  Built by hand. No trackers.
+</footer>
+
 </body>
 </html>
