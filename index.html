@@ -85,6 +85,22 @@
     max-width: 400px;
   }
 
+  .video { position: relative; display: inline-block; line-height: 0; }
+  .video .play {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 58px; height: 58px; border-radius: 50%;
+    background: rgba(20, 20, 18, 0.66);
+    transition: background 0.15s ease;
+  }
+  .video .play::after {
+    content: ""; position: absolute; top: 50%; left: 53%;
+    transform: translate(-50%, -50%);
+    border-style: solid; border-width: 10px 0 10px 17px;
+    border-color: transparent transparent transparent #fff;
+  }
+  .video:hover .play { background: rgba(20, 20, 18, 0.85); }
+
   .links a { margin-right: 0.2rem; }
   .sep { color: var(--rule); margin: 0 0.45rem; }
 
@@ -110,6 +126,14 @@
   <p>I came to this through math. I studied applied math at CU Boulder, spent a few years modeling missions and autonomy in defense simulation, and kept circling the same two questions. How does behavior emerge from simple rules, and how do you build a model you can actually trust when the agents start changing themselves.</p>
 
   <p>Outside work I build small things in the open, mostly around agents, dynamical systems, and markets. Some of them are below. Friends call me Dani.</p>
+
+  <figure>
+    <a class="video" href="https://youtu.be/NwndXH-X-dk">
+      <img src="assets/intro-video.jpg" alt="Intro video thumbnail">
+      <span class="play" aria-hidden="true"></span>
+    </a>
+    <figcaption>A short introduction. Opens on YouTube.</figcaption>
+  </figure>
 </section>
 
 <section>
